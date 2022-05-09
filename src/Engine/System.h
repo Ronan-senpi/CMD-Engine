@@ -12,6 +12,7 @@
 
 struct System {
 private:
+    bool keepRunning = true;
     std::vector<Scene*> Scenes;
     int selectedScene = 0;
     int frameCounter = 0;
@@ -19,7 +20,9 @@ private:
 public:
     inline System(const std::vector<Scene*>& s): Scenes(s){}
 
-    void MainLoop();
+    void Run();
+    void InternalUpdate();
+
 
     ~System();
 };

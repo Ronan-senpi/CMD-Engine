@@ -4,22 +4,32 @@
 
 #include "System.h"
 
-void System::MainLoop() {
-
+void System::Run() {
     Scenes[selectedScene]->Start();
 
-    while (true) {
-        Scenes[selectedScene]->Update();
+    while (keepRunning = true) {
+        InternalUpdate();
+    }
 
+}
+
+System::~System() {
+    delete Scenes[selectedScene];
+}
+
+void System::InternalUpdate() {
+
+
+        Scenes[selectedScene]->Update();
         Scenes[selectedScene]->LateUpdate();
+
+        if(frameCounter % 2 == 0) {
+            Scenes[selectedScene]->FixedUpdate();
+        }
         ++frameCounter;
 
         //Clear Screen
         //Update Screen
     }
-    Scenes[selectedScene]->FixedUpdate();
-}
 
-System::~System() {
-    delete Scenes[selectedScene];
 }

@@ -18,5 +18,5 @@ int main() {
             new Scene(),
     };
     System app(Scenes);
-    app.MainLoop();
+    app.Run();
 }
