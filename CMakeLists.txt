@@ -16,6 +16,6 @@ add_executable(CMD_Engine
         src/Transform.cpp
         src/Transform.h
         src/Position.cpp
-        src/Position.h)
-
-
+        src/Position.h
+        src/Scene.cpp
+        src/Scene.h)

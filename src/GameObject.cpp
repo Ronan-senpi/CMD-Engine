@@ -10,7 +10,7 @@ GameObject::GameObject(Transform* nt) {
 
 GameObject::~GameObject() {
     for (Component *c: components) {
-        c->~Component();
+        delete c;
     }
 }
 
