@@ -30,6 +30,14 @@ public:
     void SetPosition(Position &np);
 
     void SetPosition(Transform &nt);
+
+	void Start() override;
+
+	void Update() override;
+
+	void FixedUpdate() override;
+
+	void LateUpdate() override;
 };
 
 

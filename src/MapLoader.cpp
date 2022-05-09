@@ -2,6 +2,9 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include "GameObject.h"
+#include "Transform.h"
+#include "ASCIIRenderer.h"
 
 enum MapDataType : int {None,Size,Labels,Map};
 enum MapCellType : int {Empty,Wall,Enemy,Player,Gold};
@@ -9,7 +12,7 @@ enum MapCellType : int {Empty,Wall,Enemy,Player,Gold};
 MapLoader::MapLoader() {
 
 }
-void MapLoader::LoadMap(std::string& fileName) {
+void MapLoader::LoadMap(Scene& scene, std::string& fileName) {
 
 	std::ifstream infile("resources/map1.txt");
 
@@ -35,7 +38,16 @@ void MapLoader::LoadMap(std::string& fileName) {
 					for(char& cell : line){
 						MapCellType cellType = content[cell];
 						if(cellType != Empty){
+
+							std::vector<std::shared_ptr<Component>> components;
+							Transform t(3,5);
+							components.push_back(std::make_shared<Transform>(3, 5));
+							components.push_back(std::make_shared<ASCIIRenderer>());
+
+							GameObject go(components);
+							//scene.add go
 							std::cout << " not empty " << std::endl;
+							scene.
 						}else{
 							std::cout << " EMPTY " << std::endl;
 						}
@@ -67,6 +79,7 @@ void MapLoader::LoadMap(std::string& fileName) {
 					substrings = Split(line,sizeDelimiter);
 					int width = atoi(substrings[0].c_str());
 					int height = atoi(substrings[1].c_str());
+					scene.SetSceneDimensions(width,height);
 					std::cout << "Size : " << width << " " << height << std::endl;
 					break;
 			}

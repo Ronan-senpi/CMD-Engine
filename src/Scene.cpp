@@ -33,3 +33,8 @@ Scene::~Scene() {
         delete go;
     }
 }
+
+void Scene::SetSceneDimensions(int width, int height) {
+	this->width = width;
+	this->height = height;
+}

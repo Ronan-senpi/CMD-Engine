@@ -12,6 +12,8 @@
 
 class Scene : public Object{
 
+	int width = 0;
+	int height = 0;
     std::vector<GameObject*> GameObjects;
 public:
     ~Scene();
@@ -23,6 +25,8 @@ public:
     void FixedUpdate() override;
 
     void LateUpdate() override;
+
+	void SetSceneDimensions(int width, int height);
 };
 
 

@@ -24,3 +24,19 @@ void Transform::SetPosition(Transform &nt) {
 Transform::~Transform() {
     delete this;
 }
+
+void Transform::Start() {
+
+}
+
+void Transform::Update() {
+
+}
+
+void Transform::FixedUpdate() {
+
+}
+
+void Transform::LateUpdate() {
+
+}
