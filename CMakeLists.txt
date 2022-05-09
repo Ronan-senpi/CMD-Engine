@@ -3,4 +3,4 @@ project(CMD_Engine)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CMD_Engine main.cpp src/System.cpp src/System.h)
+add_executable(CMD_Engine main.cpp src/System.cpp src/System.h src/Object.cpp src/Object.h)
