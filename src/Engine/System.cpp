@@ -33,4 +33,4 @@ void System::InternalUpdate() {
         //Clear Screen
         //Update Screen
     }
-    
+
