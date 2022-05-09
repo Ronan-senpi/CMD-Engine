@@ -10,7 +10,20 @@
 #include <functional>
 
 namespace Time {
-    std::chrono::steady_clock::time_point StartTime = std::chrono::steady_clock::now();
+   static std::chrono::time_point<std::chrono::high_resolution_clock> startTime, endTime;
+   static std::chrono::duration<float> elapsedTime;
 
-    float DeltaTime;
+    static void Start(){
+        startTime = endTime = std::chrono::high_resolution_clock ::now();
+    }
+
+    static void Update(){
+        startTime = std::chrono::high_resolution_clock ::now();
+        elapsedTime = startTime - endTime;
+        endTime = startTime;
+    }
+
+    static float DeltaTime(){
+        return elapsedTime.count();
+    }
 }

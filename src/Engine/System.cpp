@@ -3,11 +3,13 @@
 //
 
 #include "System.h"
-
+#include "Time.h"
 void System::Run() {
+    Time::Start();
     Scenes[selectedScene]->Start();
 
     while (keepRunning = true) {
+        Time::Update();
         InternalUpdate();
     }
 
@@ -31,5 +33,4 @@ void System::InternalUpdate() {
         //Clear Screen
         //Update Screen
     }
-
-}
+    
