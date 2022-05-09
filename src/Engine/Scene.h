@@ -7,8 +7,8 @@
 
 #include <vector>
 
-#include "Object.h"
-#include "GameObject.h"
+#include "../Abstract/Object.h"
+#include "../Objects/GameObject.h"
 
 class Scene : public Object{
 
