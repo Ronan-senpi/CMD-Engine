@@ -1,7 +1,7 @@
 #include <iostream>
-#include "src/MapLoader.h"
-#include "src/System.h"
-#include "src/Scene.h"
+#include "src/Engine/MapLoader.h"
+#include "src/Engine/System.h"
+#include "src/Engine/Scene.h"
 #include <vector>
 
 constexpr float updateRate = 1.f/100.f;
