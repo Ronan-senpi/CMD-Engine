@@ -4,34 +4,29 @@
 
 #include "System.h"
 
+void System::MainLoop() {
+    this->Start();
+
+}
+
 void System::Start() {
-    for (int i = 0; i < Scenes[selectedScene].Objects.size(); ++i) {
-        Scenes[selectedScene].Objects[i].Start();
-    }
+    Scenes[selectedScene]->Start();
 }
 
 void System::Update() {
-    for (int i = 0; i < Scenes[selectedScene].Objects.size(); ++i) {
-        Scenes[selectedScene].Objects[i].Update();
-    }
+    Scenes[selectedScene]->Update();
 }
 
 void System::FixedUpdate() {
-    for (int i = 0; i < Scenes[selectedScene].Objects.size(); ++i) {
-        Scenes[selectedScene].Objects[i].FixedUpdate();
-    }
+    Scenes[selectedScene]->FixedUpdate();
 }
 
 void System::LateUpdate() {
-    for (int i = 0; i < Scenes[selectedScene].Objects.size(); ++i) {
-        Scenes[selectedScene].Objects[i].LateUpdate();
-    }
+    Scenes[selectedScene]->LateUpdate();
     //Clear Screen
     //Update Screen
 }
 
 System::~System() {
-    for (int i = 0; i < Scenes[selectedScene].Objects.size(); ++i) {
-        Scenes[selectedScene].Objects[i].Destroy();
-    }
+    delete Scenes[selectedScene];
 }

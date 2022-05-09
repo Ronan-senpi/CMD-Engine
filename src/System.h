@@ -7,17 +7,19 @@
 
 #include <utility>
 #include <vector>
+#include "Object.h"
+#include "Scene.h"
 
-class Scene;
-
-struct System {
+struct System : public Object{
 private:
     std::vector<Scene*> Scenes;
     int selectedScene = 0;
     int frameCounter = 0;
 
 public:
-    inline System(std::vector<Scene*> s): Scenes(std::move(s)){}
+    inline System(const std::vector<Scene*>& s): Scenes(s){}
+
+    void MainLoop();
 
     /**
      * call destroy of all objects
@@ -27,20 +29,20 @@ public:
     /**
      * Start is called once before the update method.
      */
-    void Start();
+    void Start() override;
     /**
      * Update is called every frame is the first method called.
      */
-    void Update();
+    void Update() override;
     /**
      * Frame-rate independent, FixedUpdate for physics calculations.
      */
-    void FixedUpdate();
+    void FixedUpdate() override;
     /**
      * LateUpdate is called every frame
      * This method clear & repopulate frames
      */
-    void LateUpdate();
+    void LateUpdate() override;
 
 
 };
