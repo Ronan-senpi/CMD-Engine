@@ -5,26 +5,19 @@
 #include "System.h"
 
 void System::MainLoop() {
-    this->Start();
 
-}
-
-void System::Start() {
     Scenes[selectedScene]->Start();
-}
 
-void System::Update() {
-    Scenes[selectedScene]->Update();
-}
+    while (true) {
+        Scenes[selectedScene]->Update();
 
-void System::FixedUpdate() {
+        Scenes[selectedScene]->LateUpdate();
+        ++frameCounter;
+
+        //Clear Screen
+        //Update Screen
+    }
     Scenes[selectedScene]->FixedUpdate();
-}
-
-void System::LateUpdate() {
-    Scenes[selectedScene]->LateUpdate();
-    //Clear Screen
-    //Update Screen
 }
 
 System::~System() {

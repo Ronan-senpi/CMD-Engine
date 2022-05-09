@@ -10,7 +10,7 @@
 #include "Object.h"
 #include "Scene.h"
 
-struct System : public Object{
+struct System {
 private:
     std::vector<Scene*> Scenes;
     int selectedScene = 0;
@@ -21,30 +21,7 @@ public:
 
     void MainLoop();
 
-    /**
-     * call destroy of all objects
-     */
-    virtual ~System();
-
-    /**
-     * Start is called once before the update method.
-     */
-    void Start() override;
-    /**
-     * Update is called every frame is the first method called.
-     */
-    void Update() override;
-    /**
-     * Frame-rate independent, FixedUpdate for physics calculations.
-     */
-    void FixedUpdate() override;
-    /**
-     * LateUpdate is called every frame
-     * This method clear & repopulate frames
-     */
-    void LateUpdate() override;
-
-
+    ~System();
 };
 
 
