@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(CMD_Engine main.cpp
         src/System.cpp
         src/Object.cpp
+        src/GameObject.cpp
+        src/Component.cpp
+        src/Transform.cpp
         src/MapLoader.cpp)
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
