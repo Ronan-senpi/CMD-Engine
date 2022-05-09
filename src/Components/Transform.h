@@ -6,8 +6,8 @@
 #define CMD_ENGINE_TRANSFORM_H
 
 
-#include "Component.h"
-#include "Position.h"
+#include "../Abstract/Component.h"
+#include "../Math/Position.h"
 
 class Transform : public Component {
 private:

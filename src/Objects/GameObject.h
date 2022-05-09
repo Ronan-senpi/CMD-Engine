@@ -5,9 +5,9 @@
 #ifndef CMD_ENGINE_GAMEOBJECT_H
 #define CMD_ENGINE_GAMEOBJECT_H
 
-#include "Object.h"
-#include "Component.h"
-#include "Transform.h"
+#include "../Abstract/Object.h"
+#include "../Abstract/Component.h"
+#include "../Components/Transform.h"
 #include <utility>
 #include <vector>
 

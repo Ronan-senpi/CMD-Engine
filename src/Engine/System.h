@@ -7,7 +7,7 @@
 
 #include <utility>
 #include <vector>
-#include "Object.h"
+#include "../Abstract/Object.h"
 #include "Scene.h"
 
 struct System : public Object{
