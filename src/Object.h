@@ -5,24 +5,20 @@
 #ifndef CMD_ENGINE_OBJECT_H
 #define CMD_ENGINE_OBJECT_H
 
+#include <iostream>
 
 class Object {
+protected:
+    std::string tag;
+    int hashed_tag;
 public:
-    Object();
+    virtual void Start() = 0;
 
-    virtual ~Object();
+    virtual void Update() = 0;
 
-    virtual void Destroy() {
-        delete this;
-    }
+    virtual void FixedUpdate() = 0;
 
-    virtual void Start();
-
-    virtual void Update();
-
-    virtual void FixedUpdate();
-
-    virtual void LateUpdate();
+    virtual void LateUpdate() = 0;
 };
 
 
