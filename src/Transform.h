@@ -7,9 +7,29 @@
 
 
 #include "Component.h"
+#include "Position.h"
 
-class Transform : public Component{
+class Transform : public Component {
+private:
+    Position pos;
+public:
+    Transform() : pos() {}
 
+    Transform(float nx, float ny) : pos(nx, ny) {}
+
+    Transform(Position &np) : pos(np) {}
+
+    Transform(Transform &nt) : pos(nt.GetPosition()) {}
+
+    ~Transform();
+
+    Position GetPosition();
+
+    void SetPosition(float nx, float ny);
+
+    void SetPosition(Position &np);
+
+    void SetPosition(Transform &nt);
 };
 
 

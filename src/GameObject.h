@@ -8,15 +8,16 @@
 #include "Object.h"
 #include "Component.h"
 #include "Transform.h"
+#include <utility>
 #include <vector>
 
 class GameObject : Object {
 protected:
-    std::vector<Component*> components;
+    std::vector<Component *> components;
 public:
-    GameObject(Transform* nt);
+    GameObject(Transform *nt);
 
-    GameObject(const std::vector<Component*>& nc): components(nc){}
+    GameObject(const std::vector<Component *> nc) : components(std::move(nc)) {}
 
     ~GameObject();
 
