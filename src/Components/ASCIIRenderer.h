@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "Component.h"
+#include "../Abstract/Component.h"
 
 class ASCIIRenderer : public Component {
 public:

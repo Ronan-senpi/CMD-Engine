@@ -2,9 +2,9 @@
 #include <fstream>
 #include <iostream>
 #include <map>
-#include "GameObject.h"
-#include "Transform.h"
-#include "ASCIIRenderer.h"
+#include "../Objects/GameObject.h"
+#include "../Components/Transform.h"
+#include "../Components/ASCIIRenderer.h"
 
 enum MapDataType : int {None,Size,Labels,Map};
 enum MapCellType : int {Empty,Wall,Enemy,Player,Gold};

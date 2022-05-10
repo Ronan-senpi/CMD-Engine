@@ -5,15 +5,15 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(CMD_Engine
         main.cpp
-        src/System.cpp
-        src/Object.cpp
-        src/GameObject.cpp
-        src/Component.cpp
-        src/Transform.cpp
-        src/MapLoader.cpp
-        src/Position.cpp
-        src/Scene.cpp
-        src/ASCIIRenderer.cpp
+        src/Engine/System.cpp
+        src/Abstract/Object.cpp
+        src/Objects/GameObject.cpp
+        src/Abstract/Component.cpp
+        src/Components/Transform.cpp
+        src/Engine/MapLoader.cpp
+        src/Math/Position.cpp
+        src/Engine/Scene.cpp
+        src/Components/ASCIIRenderer.cpp
         )
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
