@@ -3,7 +3,6 @@
 //
 
 #include "GameObject.h"
-
 /*GameObject::GameObject(std::unique_ptr<Transform> nt) {
     components.push_back(std::move(nt));
 }*/
