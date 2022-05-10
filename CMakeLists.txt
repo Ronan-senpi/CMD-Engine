@@ -12,7 +12,9 @@ add_executable(CMD_Engine
         src/Components/Transform.cpp
         src/Engine/MapLoader.cpp
         src/Math/Position.cpp
-        src/Engine/Scene.cpp)
+        src/Engine/Scene.cpp
+        src/Factory.cpp
+        src/Creator.cpp)
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
         COMMAND robocopy ${PROJECT_SOURCE_DIR}/resources/ ${PROJECT_BINARY_DIR}/resources /E /NS /NC /NFL /NDL /NP /NJH /NJS  || cmd /c "exit /b 0")
