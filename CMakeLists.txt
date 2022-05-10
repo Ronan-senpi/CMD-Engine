@@ -17,7 +17,7 @@ add_executable(CMD_Engine
         src/Engine/Time.cpp
         src/Factory.cpp
         src/Utils/Input/KeyCode.h
-
+        src/Utils/Hashing.cpp
         )
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
