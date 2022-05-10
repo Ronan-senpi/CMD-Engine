@@ -41,7 +41,7 @@ void MapLoader::LoadMap(Scene& scene, std::string& fileName) {
 
 							std::vector<std::unique_ptr<Component>> components;
 							components.push_back(std::make_unique<Transform>(3, 5));
-							components.push_back(std::make_unique<ASCIIRenderer>('X',0));
+							components.push_back(std::make_unique<ASCIIRenderer>(cell,0));
 							//GameObject go(std::move(components));
 							std::unique_ptr<GameObject> go(new GameObject(std::move(components)));
 							scene.Instantiate(std::move(go));
