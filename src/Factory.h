@@ -6,22 +6,14 @@
 #define CMD_ENGINE_FACTORY_H
 
 #include <map>
-#include "Abstract/Object.h"
-#include "Creator.h"
+#include "Objects/GameObject.h"
 
-enum ObjectType{
-    Player,
-    Enemy,
-    Wall,
-    Loot
-};
+static class Factory {
+    typedef GameObject* (*Creator)(Position pos, char c);
+    static std::map<std::string, Creator> m_Factory;
 
-class Factory {
-    std::map<ObjectType, Creator*> m_Factory;
-    Object* createObject(ObjectType type);
-
-
-
+    static GameObject* createObject(std::string type);
+    static void Register(std::string type, Creator creator);
 };
 
 

@@ -14,7 +14,6 @@ add_executable(CMD_Engine
         src/Math/Position.cpp
         src/Engine/Scene.cpp
         src/Factory.cpp
-        src/Creator.cpp)
         src/Components/ASCIIRenderer.cpp
         src/Engine/Time.cpp
         )
