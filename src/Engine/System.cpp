@@ -4,13 +4,14 @@
 
 #include "System.h"
 #include "Time.h"
+
 void System::Run() {
     Time::Start();
     Scenes[selectedScene]->Start();
 
-    while (keepRunning = true) {
-        Time::Update();
+    while (isPlaying) {
         InternalUpdate();
+        Time::Update();
     }
 
 }
@@ -21,16 +22,27 @@ System::~System() {
 
 void System::InternalUpdate() {
 
-
+    timeAcu += Time::DeltaTime();
+    //
+    while (timeAcu >= updateRate
+           && loop < MAX_LOOP) {
         Scenes[selectedScene]->Update();
         Scenes[selectedScene]->LateUpdate();
-
-        if(frameCounter % 2 == 0) {
-            Scenes[selectedScene]->FixedUpdate();
-        }
-        ++frameCounter;
-
-        //Clear Screen
-        //Update Screen
+        timeAcu -= updateRate;
+        ++loop;
     }
+    loop = 0;
+
+    while (FixedAcu >= fixedUpdateRate
+           && loop < MAX_LOOP) {
+        Scenes[selectedScene]->Update();
+        Scenes[selectedScene]->LateUpdate();
+        FixedAcu -= fixedUpdateRate;
+        ++loop;
+    }
+    loop = 0;
+
+//Clear Screen
+//Update Screen
+}
 
