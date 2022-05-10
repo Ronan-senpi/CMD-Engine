@@ -12,14 +12,31 @@
 
 struct System {
 private:
+    bool isPlaying = true;
     std::vector<Scene*> Scenes;
     int selectedScene = 0;
     int frameCounter = 0;
+    static const int MAX_LOOP = 5;
+    int loop = 0;
+    float timeAcu = 0;
+    float FixedAcu = 0;
+    static constexpr float updateRate = 1.f / 144.f;
+    static constexpr float fixedUpdateRate = 1.f / 30.f;
 
 public:
     inline System(const std::vector<Scene*>& s): Scenes(s){}
 
-    void MainLoop();
+    void Run();
+    void InternalUpdate();
+
+	void Start();
+
+	void Update();
+
+	void FixedUpdate();
+
+	void LateUpdate();
+
 
     ~System();
 };

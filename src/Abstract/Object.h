@@ -24,15 +24,16 @@ public:
     virtual void Update() = 0;
 
     /**
-     * Frame-rate independent, FixedUpdate for physics calculations.
-     */
-    virtual void FixedUpdate() = 0;
-
-    /**
      * LateUpdate is called every frame
      * This method clear & repopulate frames
      */
     virtual void LateUpdate() = 0;
+
+    /**
+     * Frame-rate independent, FixedUpdate for physics calculations.
+     */
+    virtual void FixedUpdate() = 0;
+
 };
 
 
