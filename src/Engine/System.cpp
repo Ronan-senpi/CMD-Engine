@@ -4,6 +4,7 @@
 
 #include "System.h"
 #include "Time.h"
+#include "../Components/ASCIIRenderer.h"
 
 void System::Run() {
 	Start();
@@ -36,10 +37,42 @@ void System::InternalUpdate() {
 }
 
 void System::LateUpdate() {
-    Scenes[selectedScene]->LateUpdate();
+    Scene* s = Scenes[selectedScene];
+	s->LateUpdate();
+
+	//Clear
 	std::system("cls");
-	std::cout << "Frame :" << frameCounter;
+
+	//RASTERISATION ASCII
+	int width = s->getWidth();
+	int height = s->getHeight();
+
+	std::vector<std::string> map;
+	for(int i = 0; i < height; i++){
+		std::string line = "";
+		for(int j = 0; j < width; j++){
+			line += ".";
+		}
+		map.push_back(line);
+	}
+
+	for(std::unique_ptr<GameObject>& go : s->getGameObjects()){
+		std::unique_ptr<Transform>& transform = go->getComponent<Transform>();
+		std::unique_ptr<ASCIIRenderer>& renderer = go->getComponent<ASCIIRenderer>();
+
+		Position p = transform->GetPosition();
+		map[p.y][p.x] = renderer->getAsciiValue();
+	}
+
+	//FINAL RENDER
+	std::string render = "";
+	for(int i = 0; i < map.size(); i++) {
+		render += map[i] + "\n";
+	}
+	std::cout << render << std::endl;
+
 	frameCounter++;
+	if(frameCounter > 500) isPlaying = false;
 }
 
 void System::Start() {

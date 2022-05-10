@@ -28,7 +28,13 @@ public:
 
 	void SetSceneDimensions(int width, int height);
 
+	int getWidth() const;
+	int getHeight() const;
+
 	void Instantiate(std::unique_ptr<GameObject> go);
+
+
+	std::vector<std::unique_ptr<GameObject>>& getGameObjects();
 };
 
 

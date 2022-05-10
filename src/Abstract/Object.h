@@ -6,6 +6,7 @@
 #define CMD_ENGINE_OBJECT_H
 
 #include <iostream>
+#include <memory>
 
 class Object {
 protected:

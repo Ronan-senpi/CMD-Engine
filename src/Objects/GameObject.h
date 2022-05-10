@@ -28,6 +28,8 @@ public:
     void FixedUpdate() override;
 
     void LateUpdate() override;
+	template<class T>
+	std::unique_ptr<T>& getComponent();
 };
 
 

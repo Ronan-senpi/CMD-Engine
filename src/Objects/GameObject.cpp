@@ -41,3 +41,12 @@ void GameObject::LateUpdate() {
 GameObject::GameObject(std::vector<std::unique_ptr<Component>>&& nc) {
 	components = std::move(nc);
 }
+
+template<class T>
+std::unique_ptr<T>& GameObject::getComponent() {
+	for(std::unique_ptr<Component>& c : components){
+		std::unique_ptr<T>& t = (std::unique_ptr<T>&)c;
+		if(t != nullptr) return t;
+	}
+	return nullptr;
+}

@@ -42,3 +42,15 @@ void Scene::SetSceneDimensions(int width, int height) {
 void Scene::Instantiate(std::unique_ptr<GameObject> go) {
 	gameObjects.push_back(std::move(go));
 }
+
+int Scene::getWidth() const {
+	return width;
+}
+
+int Scene::getHeight() const {
+	return height;
+}
+
+std::vector<std::unique_ptr<GameObject>> &Scene::getGameObjects() {
+	return gameObjects;
+}
