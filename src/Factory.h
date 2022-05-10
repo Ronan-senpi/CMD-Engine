@@ -9,6 +9,13 @@
 #include "Objects/GameObject.h"
 
 class Factory {
+private:
+    static Factory *instance;
+
+    Factory() { m_Factory = {}; }
+
+public:
+    static Factory *getInstance();
 
     typedef Object *(*Creator)(Position pos, char c);
 
@@ -17,6 +24,8 @@ class Factory {
     Object *createObject(std::string type, Position pos, char c);
 
     void Register(std::string type, Creator creator);
+
+
 };
 
 

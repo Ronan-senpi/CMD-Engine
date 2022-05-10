@@ -7,6 +7,11 @@
     components.push_back(std::move(nt));
 }*/
 
+
+GameObject::GameObject() {
+
+}
+
 GameObject::~GameObject() {
     for (Component* c: components) {
         //delete c;
@@ -40,4 +45,9 @@ void GameObject::LateUpdate() {
 GameObject::GameObject(std::vector<Component*> nc) {
 	components = std::move(nc);
 }
+
+void GameObject::AddComponent(Component* comp) {
+    components.push_back(comp);
+}
+
 

@@ -15,9 +15,9 @@ class GameObject : Object {
 protected:
 	std::vector<Component*> components;
 public:
+    GameObject();
 	GameObject(std::vector<Component*> nc);
     //GameObject(std::unique_ptr<Transform> nt);
-
 
     ~GameObject();
 
@@ -42,6 +42,8 @@ public:
 		}
 		return nullptr;
 	}
+
+	void AddComponent(Component* comp);
 };
 
 
