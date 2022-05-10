@@ -5,31 +5,31 @@
 #include "Scene.h"
 
 void Scene::Start() {
-    for (std::unique_ptr<GameObject>& go: gameObjects) {
+    for (GameObject* go: gameObjects) {
         go->Start();
     }
 }
 
 void Scene::Update() {
-    for (std::unique_ptr<GameObject>& go: gameObjects) {
+    for (GameObject* go: gameObjects) {
         go->Update();
     }
 }
 
 void Scene::FixedUpdate() {
-    for (std::unique_ptr<GameObject>& go: gameObjects) {
+    for (GameObject* go: gameObjects) {
         go->FixedUpdate();
     }
 }
 
 void Scene::LateUpdate() {
-    for (std::unique_ptr<GameObject>& go: gameObjects) {
+    for (GameObject* go: gameObjects) {
         go->LateUpdate();
     }
 }
 
 Scene::~Scene() {
-    for (std::unique_ptr<GameObject>& go: gameObjects) {
+    for (GameObject* go: gameObjects) {
 		
     }
 }
@@ -39,6 +39,18 @@ void Scene::SetSceneDimensions(int width, int height) {
 	this->height = height;
 }
 
-void Scene::Instantiate(std::unique_ptr<GameObject> go) {
+void Scene::Instantiate(GameObject* go) {
 	gameObjects.push_back(std::move(go));
+}
+
+int Scene::getWidth() const {
+	return width;
+}
+
+int Scene::getHeight() const {
+	return height;
+}
+
+std::vector<GameObject*> &Scene::getGameObjects() {
+	return gameObjects;
 }

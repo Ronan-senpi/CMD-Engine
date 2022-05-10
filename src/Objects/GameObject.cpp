@@ -7,42 +7,37 @@
     components.push_back(std::move(nt));
 }*/
 
-
-GameObject::GameObject() {
-
-}
-
 GameObject::~GameObject() {
-    for (std::unique_ptr<Component>& c: components) {
+    for (Component* c: components) {
         //delete c;
     }
 }
 
 void GameObject::Start() {
-    for (std::unique_ptr<Component>& c: components) {
+    for (Component* c: components) {
         c->Start();
     }
 }
 
 void GameObject::Update() {
-    for (std::unique_ptr<Component>& c: components) {
+    for (Component* c: components) {
         c->Update();
     }
 }
 
 void GameObject::FixedUpdate() {
-    for (std::unique_ptr<Component>& c: components) {
+    for (Component* c: components) {
         c->FixedUpdate();
     }
 }
 
 void GameObject::LateUpdate() {
-    for (std::unique_ptr<Component>& c: components) {
+    for (Component* c: components) {
         c->LateUpdate();
     }
 }
 
-GameObject::GameObject(std::vector<std::unique_ptr<Component>>&& nc) {
+GameObject::GameObject(std::vector<Component*> nc) {
 	components = std::move(nc);
 }
 

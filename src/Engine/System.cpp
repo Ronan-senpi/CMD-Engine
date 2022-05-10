@@ -4,9 +4,11 @@
 
 #include "System.h"
 #include "Time.h"
+#include "../Components/ASCIIRenderer.h"
 #include "../Utils/Input/Input.h"
 #include "../Utils/Input/KeyCode.h"
 #include <string>
+
 void System::Run() {
 	Start();
     std::cout << "Enter for start" << std::endl;
@@ -59,10 +61,41 @@ void System::InternalUpdate() {
 }
 
 void System::LateUpdate() {
-    Scenes[selectedScene]->LateUpdate();
+    Scene* s = Scenes[selectedScene];
+	s->LateUpdate();
+
+	//Clear
 	//std::system("cls");
-	std::cout << "Frame :" << frameCounter << std::endl;
+
+	//RASTERISATION ASCII
+	int width = s->getWidth();
+	int height = s->getHeight();
+
+	std::vector<std::string> map;
+	for(int i = 0; i < height; i++){
+		std::string line = "";
+		for(int j = 0; j < width; j++){
+			line += ".";
+		}
+		map.push_back(line);
+	}
+
+	for(GameObject* go : s->getGameObjects()){
+		Transform* transform = go->getComponent<Transform>();
+		ASCIIRenderer* renderer = go->getComponent<ASCIIRenderer>();
+		Position p = transform->GetPosition();
+		map[p.y][p.x] = renderer->getAsciiValue();
+	}
+
+	//FINAL RENDER
+	std::string render = "";
+	for(int i = 0; i < map.size(); i++) {
+		render += map[i] + "\n";
+	}
+	std::cout << render << std::endl;
+
 	frameCounter++;
+	if(frameCounter > 1000) isPlaying = false;
 }
 
 void System::Start() {

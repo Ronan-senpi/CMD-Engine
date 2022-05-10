@@ -10,14 +10,12 @@
 #include "../Components/Transform.h"
 #include <utility>
 #include <vector>
-
+#include <cassert>
 class GameObject : Object {
 protected:
-	std::vector<std::unique_ptr<Component>> components;
+	std::vector<Component*> components;
 public:
-    GameObject();
-
-	GameObject(std::vector<std::unique_ptr<Component>>&& nc);
+	GameObject(std::vector<Component*> nc);
     //GameObject(std::unique_ptr<Transform> nt);
 
 
@@ -30,6 +28,20 @@ public:
     void FixedUpdate() override;
 
     void LateUpdate() override;
+
+	template<class T>
+	T* getComponent() {
+		static_assert(std::is_base_of<Component, T>::value, "type parameter of this class must derive from Component");
+		for(Component* c : components){
+			//std::unique_ptr<T>& t = std::make(static_cast<T>(c));
+			T* casted = dynamic_cast<T*>(c);
+			if(casted != nullptr){
+				assert(T::typeHash == casted->typeHash);
+				return casted;
+			}
+		}
+		return nullptr;
+	}
 };
 
 

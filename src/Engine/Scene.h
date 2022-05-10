@@ -14,7 +14,7 @@ class Scene : public Object{
 
 	int width = 0;
 	int height = 0;
-    std::vector<std::unique_ptr<GameObject>> gameObjects;
+    std::vector<GameObject*> gameObjects;
 public:
     ~Scene();
 
@@ -28,7 +28,13 @@ public:
 
 	void SetSceneDimensions(int width, int height);
 
-	void Instantiate(std::unique_ptr<GameObject> go);
+	int getWidth() const;
+	int getHeight() const;
+
+	void Instantiate(GameObject* go);
+
+
+	std::vector<GameObject*>& getGameObjects();
 };
 
 

@@ -32,28 +32,26 @@ void MapLoader::LoadMap(Scene* scene, std::string& fileName) {
 			}
 		}else{//reading data
 			std::vector<std::string> substrings;
+			int currentChar = 0;
 			switch (currentData) {
 				case Map:
-					std::cout << "Map " << line << '\n';
+					currentChar = 0;
 					for(char& cell : line){
+
 						MapCellType cellType = content[cell];
 						if(cellType != Empty){
-
-							std::vector<std::unique_ptr<Component>> components;
-							components.push_back(std::make_unique<Transform>(3, 5));
-							components.push_back(std::make_unique<ASCIIRenderer>(cell,0));
+							std::vector<Component*> components;
+							components.push_back(new Transform(currentChar, currentLine));
+							components.push_back(new ASCIIRenderer(cell,0));
 							//GameObject go(std::move(components));
-							std::unique_ptr<GameObject> go(new GameObject(std::move(components)));
-							scene->Instantiate(std::move(go));
-							std::cout << " not empty " << std::endl;
-						}else{
-							std::cout << " EMPTY " << std::endl;
+							GameObject* go = new GameObject(components);
+							scene->Instantiate(go);
 						}
+						currentChar++;
 					}
 					currentLine++;
 					break;
 				case Labels:
-					std::cout << "Labels" << std::endl;
 					substrings = Split(line,labelDelimiter);
 					if(substrings.size() == 2){
 						MapCellType cellType;
@@ -67,18 +65,15 @@ void MapLoader::LoadMap(Scene* scene, std::string& fileName) {
 							cellType = Gold;
 						}
 						content[substrings[1].c_str()[0]] = cellType;
-						std::cout << substrings[1] << " -> " << substrings[0] << std::endl;
 					}
 					break;
 				case Size:
-					std::cout << "Size" << std::endl;
 					RemoveWordFromLine(line, firstSizeChar);
 					RemoveWordFromLine(line, lastSizeChar);
 					substrings = Split(line,sizeDelimiter);
 					int width = atoi(substrings[0].c_str());
 					int height = atoi(substrings[1].c_str());
 					scene->SetSceneDimensions(width,height);
-					std::cout << "Size : " << width << " " << height << std::endl;
 					break;
 			}
 		}
