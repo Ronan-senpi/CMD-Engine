@@ -15,7 +15,7 @@ class GameObject : Object {
 protected:
 	std::vector<std::unique_ptr<Component>> components;
 public:
-	GameObject(std::vector<std::unique_ptr<Component>> nc);
+	GameObject(std::vector<std::unique_ptr<Component>>&& nc);
     //GameObject(std::unique_ptr<Transform> nt);
 
 

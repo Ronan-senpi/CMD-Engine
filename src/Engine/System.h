@@ -10,41 +10,35 @@
 #include "../Abstract/Object.h"
 #include "Scene.h"
 
-struct System : public Object{
+struct System {
 private:
+    bool isPlaying = true;
     std::vector<Scene*> Scenes;
     int selectedScene = 0;
     int frameCounter = 0;
+    static const int MAX_LOOP = 5;
+    int loop = 0;
+    float timeAcu = 0;
+    float FixedAcu = 0;
+    static constexpr float updateRate = 1.f / 144.f;
+    static constexpr float fixedUpdateRate = 1.f / 30.f;
 
 public:
     inline System(const std::vector<Scene*>& s): Scenes(s){}
 
-    void MainLoop();
+    void Run();
+    void InternalUpdate();
 
-    /**
-     * call destroy of all objects
-     */
-    virtual ~System();
+	void Start();
 
-    /**
-     * Start is called once before the update method.
-     */
-    void Start() override;
-    /**
-     * Update is called every frame is the first method called.
-     */
-    void Update() override;
-    /**
-     * Frame-rate independent, FixedUpdate for physics calculations.
-     */
-    void FixedUpdate() override;
-    /**
-     * LateUpdate is called every frame
-     * This method clear & repopulate frames
-     */
-    void LateUpdate() override;
+	void Update();
+
+	void FixedUpdate();
+
+	void LateUpdate();
 
 
+    ~System();
 };
 
 

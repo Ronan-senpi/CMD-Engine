@@ -38,6 +38,6 @@ void GameObject::LateUpdate() {
     }
 }
 
-GameObject::GameObject(std::vector<std::unique_ptr<Component>> nc) {
+GameObject::GameObject(std::vector<std::unique_ptr<Component>>&& nc) {
 	components = std::move(nc);
 }

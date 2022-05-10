@@ -14,6 +14,7 @@ add_executable(CMD_Engine
         src/Math/Position.cpp
         src/Engine/Scene.cpp
         src/Components/ASCIIRenderer.cpp
+        src/Engine/Time.cpp
         )
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD

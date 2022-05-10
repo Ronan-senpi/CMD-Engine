@@ -3,36 +3,54 @@
 //
 
 #include "System.h"
+#include "Time.h"
 
-void System::MainLoop() {
-    this->Start();
+void System::Run() {
+	Start();
 
-}
+    while (isPlaying) {
+        InternalUpdate();
+        Time::Update();
+    }
 
-void System::Start() {
-    Scenes[selectedScene]->Start();
-	int count = 20;
-	while(count >= 0){
-		LateUpdate();
-		count--;
-	}
-}
-
-void System::Update() {
-    Scenes[selectedScene]->Update();
-}
-
-void System::FixedUpdate() {
-    Scenes[selectedScene]->FixedUpdate();
-}
-
-void System::LateUpdate() {
-    Scenes[selectedScene]->LateUpdate();
-	std::cout << std::flush;
-	std::cout << "Frame :" << frameCounter;
-	frameCounter++;
 }
 
 System::~System() {
     delete Scenes[selectedScene];
+}
+
+void System::InternalUpdate() {
+
+    timeAcu += Time::DeltaTime();
+    while (timeAcu >= updateRate
+           && loop < MAX_LOOP) {
+		FixedUpdate();
+        timeAcu -= updateRate;
+        ++loop;
+    }
+
+    loop = 0;
+
+	Update();
+	LateUpdate();
+}
+
+void System::LateUpdate() {
+    Scenes[selectedScene]->LateUpdate();
+	std::system("cls");
+	std::cout << "Frame :" << frameCounter;
+	frameCounter++;
+}
+
+void System::Start() {
+	Time::Start();
+	Scenes[selectedScene]->Start();
+}
+
+void System::Update() {
+	Scenes[selectedScene]->Update();
+}
+
+void System::FixedUpdate() {
+	Scenes[selectedScene]->LateUpdate();
 }

@@ -6,7 +6,7 @@
 class MapLoader{
 public:
 	MapLoader();
-	void LoadMap(Scene& scene, std::string& fileName);
+	void LoadMap(Scene* scene, std::string& fileName);
 private:
 	void RemoveWordFromLine(std::string &line, const std::string &word);
 	std::vector<std::string> Split(const std::string& s, const std::string& delimiter);
