@@ -6,10 +6,19 @@
 #include "Time.h"
 #include "../Utils/Input/Input.h"
 #include "../Utils/Input/KeyCode.h"
-
+#include <string>
 void System::Run() {
 	Start();
-    int maxloop = 9999;
+    std::cout << "Enter for start" << std::endl;
+
+    while (true){
+
+        if(Input::GetKeyDown(KeyCode::M)){
+            std::cout << "Start" << std::endl;
+            isPlaying = true;
+            break;
+        }
+    }
 
     while (isPlaying ) {
         if(Input::GetKeyDown(KeyCode::Escape)){
