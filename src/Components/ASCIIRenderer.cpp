@@ -31,3 +31,4 @@ void ASCIIRenderer::Update() {}
 void ASCIIRenderer::FixedUpdate() {}
 
 void ASCIIRenderer::LateUpdate() {}
+

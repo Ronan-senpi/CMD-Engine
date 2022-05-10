@@ -9,6 +9,8 @@
 #include "Object.h"
 
 class Component : public Object{
+public:
+	static const int typeHash = 2;
 };
 
 

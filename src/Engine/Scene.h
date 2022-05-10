@@ -14,7 +14,7 @@ class Scene : public Object{
 
 	int width = 0;
 	int height = 0;
-    std::vector<std::unique_ptr<GameObject>> gameObjects;
+    std::vector<GameObject*> gameObjects;
 public:
     ~Scene();
 
@@ -31,10 +31,10 @@ public:
 	int getWidth() const;
 	int getHeight() const;
 
-	void Instantiate(std::unique_ptr<GameObject> go);
+	void Instantiate(GameObject* go);
 
 
-	std::vector<std::unique_ptr<GameObject>>& getGameObjects();
+	std::vector<GameObject*>& getGameObjects();
 };
 
 

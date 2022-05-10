@@ -38,6 +38,7 @@ public:
 	void FixedUpdate() override;
 
 	void LateUpdate() override;
+	static const int typeHash = 1;
 };
 
 

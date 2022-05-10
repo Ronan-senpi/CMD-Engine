@@ -41,7 +41,7 @@ void System::LateUpdate() {
 	s->LateUpdate();
 
 	//Clear
-	std::system("cls");
+	//std::system("cls");
 
 	//RASTERISATION ASCII
 	int width = s->getWidth();
@@ -56,10 +56,9 @@ void System::LateUpdate() {
 		map.push_back(line);
 	}
 
-	for(std::unique_ptr<GameObject>& go : s->getGameObjects()){
-		std::unique_ptr<Transform>& transform = go->getComponent<Transform>();
-		std::unique_ptr<ASCIIRenderer>& renderer = go->getComponent<ASCIIRenderer>();
-
+	for(GameObject* go : s->getGameObjects()){
+		Transform* transform = go->getComponent<Transform>();
+		ASCIIRenderer* renderer = go->getComponent<ASCIIRenderer>();
 		Position p = transform->GetPosition();
 		map[p.y][p.x] = renderer->getAsciiValue();
 	}
@@ -72,7 +71,7 @@ void System::LateUpdate() {
 	std::cout << render << std::endl;
 
 	frameCounter++;
-	if(frameCounter > 500) isPlaying = false;
+	if(frameCounter > 1000) isPlaying = false;
 }
 
 void System::Start() {

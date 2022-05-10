@@ -22,7 +22,10 @@ public:
 	void FixedUpdate() override;
 
 	void LateUpdate() override;
+
+	static const int typeHash = 2;
+
 private:
-	char asciiValue = ' ';
+	char asciiValue = 'O';
 	int priority = 0;
 };
