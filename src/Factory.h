@@ -8,12 +8,15 @@
 #include <map>
 #include "Objects/GameObject.h"
 
-static class Factory {
-    typedef GameObject* (*Creator)(Position pos, char c);
-    static std::map<std::string, Creator> m_Factory;
+class Factory {
 
-    static GameObject* createObject(std::string type);
-    static void Register(std::string type, Creator creator);
+    typedef Object *(*Creator)(Position pos, char c);
+
+    std::map<std::string, Creator> m_Factory;
+
+    Object *createObject(std::string type, Position pos, char c);
+
+    void Register(std::string type, Creator creator);
 };
 
 

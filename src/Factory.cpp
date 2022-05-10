@@ -4,8 +4,8 @@
 
 #include "Factory.h"
 
-GameObject* Factory::createObject(std::string type) {
-    Creator creator = m_Factory[type];
+Object* Factory::createObject(std::string type, Position pos, char c) {
+    return m_Factory[type](pos, c);
 }
 
 void Factory::Register(std::string type, Factory::Creator creator) {

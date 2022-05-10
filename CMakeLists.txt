@@ -13,9 +13,9 @@ add_executable(CMD_Engine
         src/Engine/MapLoader.cpp
         src/Math/Position.cpp
         src/Engine/Scene.cpp
-        src/Factory.cpp
         src/Components/ASCIIRenderer.cpp
         src/Engine/Time.cpp
+        src/Factory.cpp
         )
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
