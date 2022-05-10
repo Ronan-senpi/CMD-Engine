@@ -31,15 +31,7 @@ void System::InternalUpdate() {
         timeAcu -= updateRate;
         ++loop;
     }
-    loop = 0;
 
-    while (FixedAcu >= fixedUpdateRate
-           && loop < MAX_LOOP) {
-        Scenes[selectedScene]->Update();
-        Scenes[selectedScene]->LateUpdate();
-        FixedAcu -= fixedUpdateRate;
-        ++loop;
-    }
     loop = 0;
 
 //Clear Screen

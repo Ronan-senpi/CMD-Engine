@@ -21,7 +21,7 @@ private:
     float timeAcu = 0;
     float FixedAcu = 0;
     static constexpr float updateRate = 1.f / 144.f;
-    static constexpr float fixedUpdateRate = 1.f / 60.f;
+    static constexpr float fixedUpdateRate = 1.f / 30.f;
 
 public:
     inline System(const std::vector<Scene*>& s): Scenes(s){}
