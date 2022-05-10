@@ -11,6 +11,11 @@ void System::MainLoop() {
 
 void System::Start() {
     Scenes[selectedScene]->Start();
+	int count = 20;
+	while(count >= 0){
+		LateUpdate();
+		count--;
+	}
 }
 
 void System::Update() {
@@ -23,8 +28,9 @@ void System::FixedUpdate() {
 
 void System::LateUpdate() {
     Scenes[selectedScene]->LateUpdate();
-    //Clear Screen
-    //Update Screen
+	std::cout << std::flush;
+	std::cout << "Frame :" << frameCounter;
+	frameCounter++;
 }
 
 System::~System() {

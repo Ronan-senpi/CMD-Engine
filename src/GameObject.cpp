@@ -4,36 +4,40 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(Transform* nt) {
-    components.push_back(nt);
-}
+/*GameObject::GameObject(std::unique_ptr<Transform> nt) {
+    components.push_back(std::move(nt));
+}*/
 
 GameObject::~GameObject() {
-    for (Component *c: components) {
-        delete c;
+    for (std::unique_ptr<Component>& c: components) {
+        //delete c;
     }
 }
 
 void GameObject::Start() {
-    for (Component *c: components) {
+    for (std::unique_ptr<Component>& c: components) {
         c->Start();
     }
 }
 
 void GameObject::Update() {
-    for (Component *c: components) {
+    for (std::unique_ptr<Component>& c: components) {
         c->Update();
     }
 }
 
 void GameObject::FixedUpdate() {
-    for (Component *c: components) {
+    for (std::unique_ptr<Component>& c: components) {
         c->FixedUpdate();
     }
 }
 
 void GameObject::LateUpdate() {
-    for (Component *c: components) {
+    for (std::unique_ptr<Component>& c: components) {
         c->LateUpdate();
     }
+}
+
+GameObject::GameObject(std::vector<std::unique_ptr<Component>> nc) {
+	components = std::move(nc);
 }

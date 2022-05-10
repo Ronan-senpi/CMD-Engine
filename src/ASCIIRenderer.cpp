@@ -4,6 +4,10 @@
 
 #include "ASCIIRenderer.h"
 
+
+ASCIIRenderer::ASCIIRenderer(char ascii, int renderPriority) : asciiValue(ascii), priority(renderPriority) {
+
+}
 char ASCIIRenderer::getAsciiValue() const {
 	return asciiValue;
 }

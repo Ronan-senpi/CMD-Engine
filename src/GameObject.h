@@ -13,11 +13,11 @@
 
 class GameObject : Object {
 protected:
-    std::vector<Component *> components;
+	std::vector<std::unique_ptr<Component>> components;
 public:
-    GameObject(Transform *nt);
+	GameObject(std::vector<std::unique_ptr<Component>> nc);
+    //GameObject(std::unique_ptr<Transform> nt);
 
-    GameObject(const std::vector<Component *> nc) : components(std::move(nc)) {}
 
     ~GameObject();
 

@@ -8,6 +8,7 @@
 class ASCIIRenderer : public Component {
 public:
 
+	ASCIIRenderer(char, int);
 	char getAsciiValue() const;
 	void setAsciiValue(char);
 

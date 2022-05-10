@@ -39,15 +39,13 @@ void MapLoader::LoadMap(Scene& scene, std::string& fileName) {
 						MapCellType cellType = content[cell];
 						if(cellType != Empty){
 
-							std::vector<std::shared_ptr<Component>> components;
-							Transform t(3,5);
-							components.push_back(std::make_shared<Transform>(3, 5));
-							components.push_back(std::make_shared<ASCIIRenderer>());
-
-							GameObject go(components);
-							//scene.add go
+							std::vector<std::unique_ptr<Component>> components;
+							components.push_back(std::make_unique<Transform>(3, 5));
+							components.push_back(std::make_unique<ASCIIRenderer>('X',0));
+							//GameObject go(std::move(components));
+							std::unique_ptr<GameObject> go(new GameObject(std::move(components)));
+							scene.Instantiate(std::move(go));
 							std::cout << " not empty " << std::endl;
-							scene.
 						}else{
 							std::cout << " EMPTY " << std::endl;
 						}
