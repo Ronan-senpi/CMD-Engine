@@ -16,7 +16,7 @@ Object *CreatePlayer(Position pos, char c) {
 
     player->AddComponent(trans);
     player->AddComponent(renderer);
-
+    return player;
 }
 
 int main() {
@@ -31,9 +31,9 @@ int main() {
     System app(Scenes);
     app.Run();
     std::cin;
-
-    Factory *fac = Factory::getInstance();
-    fac->Register("Player", (*CreatePlayer));
+//
+//    Factory *fac = Factory::getInstance();
+//    fac->Register("Player", (*CreatePlayer));
 
 }
 

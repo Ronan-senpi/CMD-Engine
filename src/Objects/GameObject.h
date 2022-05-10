@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 #include <cassert>
-class GameObject : Object {
+class GameObject : public Object {
 protected:
 	std::vector<Component*> components;
 public:
