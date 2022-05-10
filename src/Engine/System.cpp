@@ -5,15 +5,33 @@
 #include "System.h"
 #include "Time.h"
 #include "../Components/ASCIIRenderer.h"
+#include "../Utils/Input/Input.h"
+#include "../Utils/Input/KeyCode.h"
+#include <string>
 
 void System::Run() {
 	Start();
+    std::cout << "Enter for start" << std::endl;
 
-    while (isPlaying) {
+    while (true){
+
+        if(Input::GetKeyDown(KeyCode::M)){
+            std::cout << "Start" << std::endl;
+            isPlaying = true;
+            break;
+        }
+    }
+
+    while (isPlaying ) {
+        if(Input::GetKeyDown(KeyCode::Escape)){
+            std::cout << "Kill Game" << std::endl;
+            isPlaying = false;
+            break;
+        }
         InternalUpdate();
         Time::Update();
     }
-
+    //delete this;
 }
 
 System::~System() {
@@ -21,7 +39,6 @@ System::~System() {
 }
 
 void System::InternalUpdate() {
-
     timeAcu += Time::DeltaTime();
     while (timeAcu >= updateRate
            && loop < MAX_LOOP) {
@@ -29,8 +46,15 @@ void System::InternalUpdate() {
         timeAcu -= updateRate;
         ++loop;
     }
-
     loop = 0;
+
+//    while (FixedAcu >= fixedUpdateRate
+//           && loop < MAX_LOOP) {
+//        Scenes[selectedScene]->FixedUpdate();
+//        FixedAcu -= fixedUpdateRate;
+//        ++loop;
+//    }
+//    loop = 0;
 
 	Update();
 	LateUpdate();
@@ -85,4 +109,5 @@ void System::Update() {
 
 void System::FixedUpdate() {
 	Scenes[selectedScene]->LateUpdate();
+    Time::FixedUpdate();
 }

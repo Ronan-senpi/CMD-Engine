@@ -3,7 +3,6 @@
 //
 
 #include "GameObject.h"
-
 /*GameObject::GameObject(std::unique_ptr<Transform> nt) {
     components.push_back(std::move(nt));
 }*/
@@ -41,3 +40,4 @@ void GameObject::LateUpdate() {
 GameObject::GameObject(std::vector<Component*> nc) {
 	components = std::move(nc);
 }
+

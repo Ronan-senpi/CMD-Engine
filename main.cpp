@@ -18,4 +18,5 @@ int main() {
 	loader.LoadMap(Scenes[0], mapFile);
     System app(Scenes);
     app.Run();
+    std::cin;
 }

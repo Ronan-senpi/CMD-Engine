@@ -15,6 +15,9 @@ add_executable(CMD_Engine
         src/Engine/Scene.cpp
         src/Components/ASCIIRenderer.cpp
         src/Engine/Time.cpp
+        src/Factory.cpp
+        src/Utils/Input/KeyCode.h
+
         )
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
