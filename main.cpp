@@ -11,12 +11,11 @@ int main() {
     std::cout << "Hello, World!" << std::endl;
 	MapLoader loader;
 	std::string mapFile = "map1.txt";
-	loader.LoadMap(mapFile);
     
     std::vector<Scene *> Scenes = {
-            new Scene(),
-            new Scene(),
+            new Scene()
     };
+	loader.LoadMap(Scenes[0], mapFile);
     System app(Scenes);
     app.Run();
 }

@@ -29,6 +29,14 @@ public:
     void Run();
     void InternalUpdate();
 
+	void Start();
+
+	void Update();
+
+	void FixedUpdate();
+
+	void LateUpdate();
+
 
     ~System();
 };

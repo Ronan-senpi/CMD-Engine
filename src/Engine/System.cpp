@@ -6,8 +6,7 @@
 #include "Time.h"
 
 void System::Run() {
-    Time::Start();
-    Scenes[selectedScene]->Start();
+	Start();
 
     while (isPlaying) {
         InternalUpdate();
@@ -23,18 +22,35 @@ System::~System() {
 void System::InternalUpdate() {
 
     timeAcu += Time::DeltaTime();
-    //
     while (timeAcu >= updateRate
            && loop < MAX_LOOP) {
-        Scenes[selectedScene]->Update();
-        Scenes[selectedScene]->LateUpdate();
+		FixedUpdate();
         timeAcu -= updateRate;
         ++loop;
     }
 
     loop = 0;
 
-//Clear Screen
-//Update Screen
+	Update();
+	LateUpdate();
 }
 
+void System::LateUpdate() {
+    Scenes[selectedScene]->LateUpdate();
+	std::system("cls");
+	std::cout << "Frame :" << frameCounter;
+	frameCounter++;
+}
+
+void System::Start() {
+	Time::Start();
+	Scenes[selectedScene]->Start();
+}
+
+void System::Update() {
+	Scenes[selectedScene]->Update();
+}
+
+void System::FixedUpdate() {
+	Scenes[selectedScene]->LateUpdate();
+}

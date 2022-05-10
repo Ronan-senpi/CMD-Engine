@@ -12,7 +12,9 @@
 
 class Scene : public Object{
 
-    std::vector<GameObject*> GameObjects;
+	int width = 0;
+	int height = 0;
+    std::vector<std::unique_ptr<GameObject>> gameObjects;
 public:
     ~Scene();
 
@@ -23,6 +25,10 @@ public:
     void FixedUpdate() override;
 
     void LateUpdate() override;
+
+	void SetSceneDimensions(int width, int height);
+
+	void Instantiate(std::unique_ptr<GameObject> go);
 };
 
 
