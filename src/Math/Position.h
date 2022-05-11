@@ -22,13 +22,13 @@ struct Position {
 
     Position(const Position &np) : x(np.x), y(np.y) {}
 
-    constexpr Position &operator*=(const Position &b);
+    void operator*=(const Position &b);
 
-    constexpr Position &operator*=(const float &b);
+    void operator*=(const float &b);
 
-    constexpr Position &operator+=(const Position &b);
+    void operator+=(const Position &b);
 
-    constexpr Position &operator+=(const float &b);
+    void operator+=(const float &b);
 
 };
 

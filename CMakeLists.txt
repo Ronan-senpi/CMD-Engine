@@ -18,7 +18,8 @@ add_executable(CMD_Engine
         src/Factory.cpp
         src/Utils/Input/KeyCode.h
         src/Utils/Hashing.cpp
-        )
+        src/Components/PlayerMovement.cpp
+        src/Components/PlayerMovement.h src/Utils/Input/Input.cpp)
 
 add_custom_command(TARGET CMD_Engine PRE_BUILD
         COMMAND robocopy ${PROJECT_SOURCE_DIR}/resources/ ${PROJECT_BINARY_DIR}/resources /E /NS /NC /NFL /NDL /NP /NJH /NJS  || cmd /c "exit /b 0")

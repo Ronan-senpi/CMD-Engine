@@ -11,16 +11,14 @@ Position Position::down = Position(0.0f, -1.f);
 Position Position::left = Position(-1.f, 0.0f);
 Position Position::right = Position(1.f, 0.0f);
 
-constexpr Position &Position::operator*=(const Position &b) {
+void Position::operator*=(const Position &b) {
     x *= b.x;
     y *= b.y;
-    return *this;
 }
 
-constexpr Position &Position::operator*=(const float &b) {
+void Position::operator*=(const float &b) {
     x *= b;
     y *= b;
-    return *this;
 }
 
 Position operator*(const Position &a, const Position &b) {
@@ -35,16 +33,14 @@ Position operator*(const Position &a, const float &b) {
     return {a.x * b, a.y * b};
 }
 
-constexpr Position &Position::operator+=(const Position &b) {
+void Position::operator+=(const Position &b) {
     x += b.x;
     y += b.y;
-    return *this;
 }
 
-constexpr Position &Position::operator+=(const float &b) {
+void Position::operator+=(const float &b) {
     x += b;
     y += b;
-    return *this;
 }
 
 Position operator+(const Position &a, const Position &b) {

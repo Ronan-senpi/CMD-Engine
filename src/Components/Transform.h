@@ -10,9 +10,8 @@
 #include "../Math/Position.h"
 
 class Transform : public Component {
-private:
-    Position pos;
 public:
+    Position pos;
     Transform() : pos() {}
 
     Transform(float nx, float ny) : pos(nx, ny) {}

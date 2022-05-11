@@ -8,19 +8,9 @@
 #include "KeyCode.h"
 #include <conio.h>
 
-namespace Input {
-
-
-
-    bool GetKeyDown(KeyCode keyCode) {
-        if (_kbhit()) {
-            int ch = _getch();
-            if (ch == keyCode)
-                return true;
-        }
-        return false;
-    }
-
+class Input {
+public:
+     static bool GetKeyDown(KeyCode keyCode);
 };
 
 

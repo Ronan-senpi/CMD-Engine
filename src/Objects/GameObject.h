@@ -19,6 +19,8 @@ public:
 	GameObject(std::vector<Component*> nc);
     //GameObject(std::unique_ptr<Transform> nt);
 
+    GameObject(GameObject& go);
+
     ~GameObject();
 
     void Start() override;
