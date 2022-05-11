@@ -46,10 +46,10 @@ GameObject *CreateGold(Position pos, char c) {
 
 int main() {
     Factory *fac = Factory::getInstance();
-    fac->Register("Player", CreatePlayer);
-    fac->Register("Enemy", CreateEnemy);
-    fac->Register("Wall", CreateWall);
-    fac->Register("Gold", CreateGold);
+    fac->Register("player", CreatePlayer);
+    fac->Register("enemy", CreateEnemy);
+    fac->Register("wall", CreateWall);
+    fac->Register("gold", CreateGold);
 
     std::cout << "Hello, World!" << std::endl;
     MapLoader loader;
@@ -58,7 +58,7 @@ int main() {
     std::vector<Scene *> Scenes = {
             new Scene()
     };
-    loader.LoadMap(Scenes[0], mapFile);
+    loader.LoadMap(fac,Scenes[0], mapFile);
     System app(Scenes);
     app.Run();
     std::cin;
