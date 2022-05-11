@@ -10,7 +10,7 @@
 
 class Hashing {
 public:
-    static uint32_t murmur3_32(const char *key, uint32_t len, uint32_t seed);
+    static int murmur3_32(const char *key, int len, int seed);
 private:
     Hashing(){}
 };

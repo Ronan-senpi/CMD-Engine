@@ -40,7 +40,7 @@ void Scene::SetSceneDimensions(int width, int height) {
 }
 
 void Scene::Instantiate(GameObject* go) {
-	gameObjects.push_back(std::move(go));
+	gameObjects.push_back(go);
 }
 
 int Scene::getWidth() const {

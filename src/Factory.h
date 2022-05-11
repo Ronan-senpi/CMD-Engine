@@ -21,9 +21,9 @@ public:
 
     std::map<int, Creator> m_Factory;
 
-    GameObject *createObject(int type, Position pos, char c);
+    GameObject *createObject(uint32_t type, Position pos, char c);
 
-    void Register(int type, Creator creator);
+    void Register(uint32_t type, Creator creator);
 
 
 };

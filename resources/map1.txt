@@ -1,10 +1,10 @@
 >size
 [35,15]
 >labels
-gold G
-enemy W
-player @
-wall #
+Gold G
+Enemy W
+Player @
+Wall #
 >map
 ....##########.....................
 ....#GG...G..#.....................

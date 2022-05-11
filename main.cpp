@@ -5,6 +5,7 @@
 #include "src/Factory.h"
 #include "src/Components/ASCIIRenderer.h"
 #include "src/Engine/TagManager.h"
+#include "src/Components/PlayerMovement.h"
 #include <vector>
 
 constexpr float updateRate = 1.f / 100.f;
@@ -23,6 +24,8 @@ GameObject *CreateBaseObject(Position pos, char c) {
 GameObject *CreatePlayer(Position pos, char c) {
     GameObject *player = CreateBaseObject(pos, c);
     //Add specifics player components
+    PlayerMovement* pm = new PlayerMovement(player);
+    player->AddComponent(pm);
     return player;
 }
 
@@ -67,7 +70,9 @@ int main() {
     loader.LoadMap(fac, Scenes[0], mapFile);
     System app(Scenes);
     app.Run();
-    std::cin;
+
+    std::string str2;
+    std::cin >> str2 ;
 
 
 }

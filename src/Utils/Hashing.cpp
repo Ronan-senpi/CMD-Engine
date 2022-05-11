@@ -3,21 +3,21 @@
 //
 
 #include "Hashing.h"
-uint32_t Hashing::murmur3_32(const char *key, uint32_t len, uint32_t seed) {
-    static const uint32_t c1 = 0xcc9e2d51;
-    static const uint32_t c2 = 0x1b873593;
-    static const uint32_t r1 = 15;
-    static const uint32_t r2 = 13;
-    static const uint32_t m = 5;
-    static const uint32_t n = 0xe6546b64;
+int Hashing::murmur3_32(const char *key, int len, int seed) {
+    static const int c1 = 0xcc9e2d51;
+    static const int c2 = 0x1b873593;
+    static const int r1 = 15;
+    static const int r2 = 13;
+    static const int m = 5;
+    static const int n = 0xe6546b64;
 
-    uint32_t hash = seed;
+    int hash = seed;
 
     const int nblocks = len / 4;
-    const uint32_t *blocks = (const uint32_t *) key;
+    const int *blocks = (const int *) key;
     int i;
     for (i = 0; i < nblocks; i++) {
-        uint32_t k = blocks[i];
+        int k = blocks[i];
         k *= c1;
         k = (k << r1) | (k >> (32 - r1));
         k *= c2;
@@ -26,8 +26,8 @@ uint32_t Hashing::murmur3_32(const char *key, uint32_t len, uint32_t seed) {
         hash = ((hash << r2) | (hash >> (32 - r2))) * m + n;
     }
 
-    const uint8_t *tail = (const uint8_t *) (key + nblocks * 4);
-    uint32_t k1 = 0;
+    const int *tail = (const int *) (key + nblocks * 4);
+    int k1 = 0;
 
     switch (len & 3) {
         case 3:
