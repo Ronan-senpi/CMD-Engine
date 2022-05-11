@@ -16,7 +16,7 @@ protected:
 	std::vector<Component*> components;
 public:
     int instanceTag;
-    static int tag;
+    int tag = 0;
 
     GameObject();
 	GameObject(std::vector<Component*> nc);
