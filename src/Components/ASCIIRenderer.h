@@ -8,7 +8,7 @@
 class ASCIIRenderer : public Component {
 public:
 
-	ASCIIRenderer(char, int);
+	ASCIIRenderer(GameObject*, char, int);
 	char getAsciiValue() const;
 	void setAsciiValue(char);
 

@@ -12,13 +12,13 @@
 class Transform : public Component {
 public:
     Position pos;
-    Transform() : pos() {}
+    Transform(GameObject* go) :Component(go), pos() {}
 
-    Transform(float nx, float ny) : pos(nx, ny) {}
+    Transform(GameObject* go, float nx, float ny) :Component(go), pos(nx, ny) {}
 
-    Transform(Position &np) : pos(np) {}
+    Transform(GameObject* go, Position &np) :Component(go), pos(np) {}
 
-    Transform(Transform &nt) : pos(nt.GetPosition()) {}
+    Transform(GameObject* go, Transform &nt) :Component(go), pos(nt.GetPosition()) {}
 
     ~Transform();
 
