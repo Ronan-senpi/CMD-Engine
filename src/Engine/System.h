@@ -12,6 +12,8 @@
 
 struct System {
 private:
+    bool clear_frame = true;
+//    bool needStart = false;
     bool isPlaying = true;
     std::vector<Scene*> Scenes;
     int selectedScene = 0;
