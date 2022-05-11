@@ -10,11 +10,11 @@
 #include "../Abstract/Object.h"
 #include "../Objects/GameObject.h"
 
-class Scene : public Object{
+class Scene : public Object {
 
-	int width = 0;
-	int height = 0;
-    std::vector<GameObject*> gameObjects;
+    int width = 0;
+    int height = 0;
+    std::vector<GameObject *> gameObjects;
 public:
     ~Scene();
 
@@ -26,15 +26,17 @@ public:
 
     void LateUpdate() override;
 
-	void SetSceneDimensions(int width, int height);
+    void SetSceneDimensions(int width, int height);
 
-	int getWidth() const;
-	int getHeight() const;
+    int getWidth() const;
 
-	void Instantiate(GameObject* go);
+    int getHeight() const;
 
+    void Instantiate(GameObject *go);
 
-	std::vector<GameObject*>& getGameObjects();
+    std::vector<GameObject *> findObjectWithTags(int tag);
+
+    std::vector<GameObject *> &getGameObjects();
 };
 
 

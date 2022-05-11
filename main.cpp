@@ -23,6 +23,7 @@ GameObject *CreateBaseObject(Position pos, char c) {
 
 GameObject *CreatePlayer(Position pos, char c) {
     GameObject *player = CreateBaseObject(pos, c);
+    player->tag = TagManager::getInstance()->m_TagManager["Player"];
     //Add specifics player components
     PlayerMovement* pm = new PlayerMovement(player);
     player->AddComponent(pm);
@@ -31,12 +32,16 @@ GameObject *CreatePlayer(Position pos, char c) {
 
 GameObject *CreateEnemy(Position pos, char c) {
     GameObject *enemy = CreateBaseObject(pos, c);
+    enemy->tag = TagManager::getInstance()->m_TagManager["Enemy"];
+
     //Add specifics player components
     return enemy;
 }
 
 GameObject *CreateWall(Position pos, char c) {
     GameObject *wall = CreateBaseObject(pos, c);
+    wall->tag = TagManager::getInstance()->m_TagManager["Wall"];
+
     //Add specifics player components
     return wall;
 }
@@ -44,6 +49,7 @@ GameObject *CreateWall(Position pos, char c) {
 
 GameObject *CreateGold(Position pos, char c) {
     GameObject *gold = CreateBaseObject(pos, c);
+    gold->tag = TagManager::getInstance()->m_TagManager["Gold"];
     //Add specifics player components
     return gold;
 }
