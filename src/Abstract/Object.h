@@ -10,8 +10,6 @@
 
 class Object {
 protected:
-    std::string tag;
-    int hashed_tag;
 public:
 
     /**

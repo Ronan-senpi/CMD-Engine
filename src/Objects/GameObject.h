@@ -15,6 +15,9 @@ class GameObject : public Object {
 protected:
 	std::vector<Component*> components;
 public:
+    int instanceTag;
+    static int tag;
+
     GameObject();
 	GameObject(std::vector<Component*> nc);
     //GameObject(std::unique_ptr<Transform> nt);

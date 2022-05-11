@@ -5,16 +5,17 @@
 #include "../Objects/GameObject.h"
 #include "../Components/Transform.h"
 #include "../Components/ASCIIRenderer.h"
+#include "TagManager.h"
+
 enum MapDataType : int {None,Size,Labels,Map};
 
 MapLoader::MapLoader() {
 }
 
 void MapLoader::LoadMap(Factory* fac, Scene* scene, std::string& fileName) {
-
 	std::ifstream infile("resources/map1.txt");
 
-	std::map<char,std::string> content;// key : the character, data : the type of cell
+	std::map<char,int> content;// key : the character, data : the type of cell
 
 	MapDataType currentData = None;
 	int currentLine = 0;
@@ -53,7 +54,7 @@ void MapLoader::LoadMap(Factory* fac, Scene* scene, std::string& fileName) {
 				case Labels:
 					substrings = Split(line,labelDelimiter);
 					if(substrings.size() == 2){
-						content[substrings[1].c_str()[0]] = substrings[0];
+						content[substrings[1].c_str()[0]] = TagManager::getInstance()->m_TagManager[substrings[0]];
 					}
 					break;
 				case Size:

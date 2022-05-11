@@ -10,12 +10,12 @@ Factory *Factory::getInstance() {
     return instance;
 }
 
-GameObject *Factory::createObject(std::string type, Position pos, char c) {
+GameObject *Factory::createObject(int type, Position pos, char c) {
     return m_Factory[type](pos, c);
 }
 
-void Factory::Register(std::string type, Factory::Creator creator) {
-    m_Factory.insert(std::pair<std::string, Creator>(type, creator));
+void Factory::Register(int type, Factory::Creator creator) {
+    m_Factory.insert(std::pair<int, Creator>(type, creator));
 }
 
 

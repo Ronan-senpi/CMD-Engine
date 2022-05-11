@@ -9,6 +9,8 @@ class GameObject;
 class Component : public Object{
 public:
     GameObject* gameObject;
+    Component();
+
 	static const int typeHash = 0;
 
 };

@@ -19,11 +19,11 @@ public:
 
     typedef GameObject *(*Creator)(Position pos, char c);
 
-    std::map<std::string, Creator> m_Factory;
+    std::map<int, Creator> m_Factory;
 
-    GameObject *createObject(std::string type, Position pos, char c);
+    GameObject *createObject(int type, Position pos, char c);
 
-    void Register(std::string type, Creator creator);
+    void Register(int type, Creator creator);
 
 
 };

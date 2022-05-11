@@ -4,6 +4,7 @@
 #include "src/Engine/Scene.h"
 #include "src/Factory.h"
 #include "src/Components/ASCIIRenderer.h"
+#include "src/Engine/TagManager.h"
 #include <vector>
 
 constexpr float updateRate = 1.f / 100.f;
@@ -45,12 +46,17 @@ GameObject *CreateGold(Position pos, char c) {
 }
 
 int main() {
+    TagManager *tagManager = TagManager::getInstance();
+    int playerHashed = tagManager->createTag("Player");
+    int enemyHashed = tagManager->createTag("Enemy");
+    int wallHashed = tagManager->createTag("Wall");
+    int goldHashed = tagManager->createTag("Gold");
     Factory *fac = Factory::getInstance();
-    fac->Register("player", CreatePlayer);
-    fac->Register("enemy", CreateEnemy);
-    fac->Register("wall", CreateWall);
-    fac->Register("gold", CreateGold);
-
+    fac->Register(playerHashed, CreatePlayer);
+    fac->Register(enemyHashed, CreateEnemy);
+    fac->Register(wallHashed, CreateWall);
+    fac->Register(goldHashed, CreateGold);
+    
     std::cout << "Hello, World!" << std::endl;
     MapLoader loader;
     std::string mapFile = "map1.txt";
@@ -58,7 +64,7 @@ int main() {
     std::vector<Scene *> Scenes = {
             new Scene()
     };
-    loader.LoadMap(fac,Scenes[0], mapFile);
+    loader.LoadMap(fac, Scenes[0], mapFile);
     System app(Scenes);
     app.Run();
     std::cin;
