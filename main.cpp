@@ -19,7 +19,7 @@ GameObject *CreateBaseObject(Position pos, char c) {
     return object;
 }
 
-Object *CreatePlayer(Position pos, char c) {
+GameObject *CreatePlayer(Position pos, char c) {
     GameObject *player = CreateBaseObject(pos, c);
     //Add specifics player components
     return player;
@@ -27,27 +27,23 @@ Object *CreatePlayer(Position pos, char c) {
 
 int main() {
     Factory *fac = Factory::getInstance();
-    fac->Register("Player", (*[](Position pos, char c) {
-        GameObject *player = CreateBaseObject(pos, c);
-        //Add specifics player components
-        return player;
-    }));
+    fac->Register("Player", CreatePlayer);
 
-    fac->Register("Enemy", (*[](Position pos, char c) {
-        GameObject *player = CreateBaseObject(pos, c);
-        //Add specifics enemy components
-        return player;
-    }));
-    fac->Register("Wall", (*[](Position pos, char c) {
-        GameObject *player = CreateBaseObject(pos, c);
-        //Add specifics wall components
-        return player;
-    }));
-    fac->Register("Gold", (*[](Position pos, char c) {
-        GameObject *player = CreateBaseObject(pos, c);
-        //Add specifics gold components
-        return player;
-    }));
+//    fac->Register("Enemy", (*[](Position pos, char c) {
+//        GameObject *player = CreateBaseObject(pos, c);
+//        //Add specifics enemy components
+//        return player;
+//    }));
+//    fac->Register("Wall", (*[](Position pos, char c) {
+//        GameObject *player = CreateBaseObject(pos, c);
+//        //Add specifics wall components
+//        return player;
+//    }));
+//    fac->Register("Gold", (*[](Position pos, char c) {
+//        GameObject *player = CreateBaseObject(pos, c);
+//        //Add specifics gold components
+//        return player;
+//    }));
 
     std::cout << "Hello, World!" << std::endl;
     MapLoader loader;
