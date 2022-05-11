@@ -25,25 +25,31 @@ GameObject *CreatePlayer(Position pos, char c) {
     return player;
 }
 
+GameObject *CreateEnemy(Position pos, char c) {
+    GameObject *enemy = CreateBaseObject(pos, c);
+    //Add specifics player components
+    return enemy;
+}
+
+GameObject *CreateWall(Position pos, char c) {
+    GameObject *wall = CreateBaseObject(pos, c);
+    //Add specifics player components
+    return wall;
+}
+
+
+GameObject *CreateGold(Position pos, char c) {
+    GameObject *gold = CreateBaseObject(pos, c);
+    //Add specifics player components
+    return gold;
+}
+
 int main() {
     Factory *fac = Factory::getInstance();
     fac->Register("Player", CreatePlayer);
-
-//    fac->Register("Enemy", (*[](Position pos, char c) {
-//        GameObject *player = CreateBaseObject(pos, c);
-//        //Add specifics enemy components
-//        return player;
-//    }));
-//    fac->Register("Wall", (*[](Position pos, char c) {
-//        GameObject *player = CreateBaseObject(pos, c);
-//        //Add specifics wall components
-//        return player;
-//    }));
-//    fac->Register("Gold", (*[](Position pos, char c) {
-//        GameObject *player = CreateBaseObject(pos, c);
-//        //Add specifics gold components
-//        return player;
-//    }));
+    fac->Register("Enemy", CreateEnemy);
+    fac->Register("Wall", CreateWall);
+    fac->Register("Gold", CreateGold);
 
     std::cout << "Hello, World!" << std::endl;
     MapLoader loader;
@@ -56,7 +62,6 @@ int main() {
     System app(Scenes);
     app.Run();
     std::cin;
-
 
 
 }
