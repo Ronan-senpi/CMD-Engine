@@ -9,17 +9,46 @@
 constexpr float updateRate = 1.f / 100.f;
 constexpr float fixedUpdateRate = 1.f / 100.f;
 
-Object *CreatePlayer(Position pos, char c) {
-    GameObject *player = new GameObject();
+GameObject *CreateBaseObject(Position pos, char c) {
+    GameObject *object = new GameObject();
     Transform *trans = new Transform(pos);
     ASCIIRenderer *renderer = new ASCIIRenderer(c, 0);
 
-    player->AddComponent(trans);
-    player->AddComponent(renderer);
+    object->AddComponent(trans);
+    object->AddComponent(renderer);
+    return object;
+}
+
+Object *CreatePlayer(Position pos, char c) {
+    GameObject *player = CreateBaseObject(pos, c);
+    //Add specifics player components
     return player;
 }
 
 int main() {
+    Factory *fac = Factory::getInstance();
+    fac->Register("Player", (*[](Position pos, char c) {
+        GameObject *player = CreateBaseObject(pos, c);
+        //Add specifics player components
+        return player;
+    }));
+
+    fac->Register("Enemy", (*[](Position pos, char c) {
+        GameObject *player = CreateBaseObject(pos, c);
+        //Add specifics enemy components
+        return player;
+    }));
+    fac->Register("Wall", (*[](Position pos, char c) {
+        GameObject *player = CreateBaseObject(pos, c);
+        //Add specifics wall components
+        return player;
+    }));
+    fac->Register("Gold", (*[](Position pos, char c) {
+        GameObject *player = CreateBaseObject(pos, c);
+        //Add specifics gold components
+        return player;
+    }));
+
     std::cout << "Hello, World!" << std::endl;
     MapLoader loader;
     std::string mapFile = "map1.txt";
@@ -31,9 +60,8 @@ int main() {
     System app(Scenes);
     app.Run();
     std::cin;
-//
-//    Factory *fac = Factory::getInstance();
-//    fac->Register("Player", (*CreatePlayer));
+
+
 
 }
 

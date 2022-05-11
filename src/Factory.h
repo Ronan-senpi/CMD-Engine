@@ -17,11 +17,11 @@ private:
 public:
     static Factory *getInstance();
 
-    typedef Object *(*Creator)(Position pos, char c);
+    typedef GameObject *(*Creator)(Position pos, char c);
 
     std::map<std::string, Creator> m_Factory;
 
-    Object *createObject(std::string type, Position pos, char c);
+    GameObject *createObject(std::string type, Position pos, char c);
 
     void Register(std::string type, Creator creator);
 
