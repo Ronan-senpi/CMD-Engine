@@ -13,14 +13,14 @@ void System::Run() {
 	Start();
     std::cout << "Enter for start" << std::endl;
 
-//    while (true){
-//
-//        if(Input::GetKeyDown(KeyCode::M)){
-//            std::cout << "Start" << std::endl;
-//            isPlaying = true;
-//            break;
-//        }
-//    }
+    while (true){
+
+        if(Input::GetKeyDown(KeyCode::M)){
+            std::cout << "Start" << std::endl;
+            isPlaying = true;
+            break;
+        }
+    }
 
     while (isPlaying ) {
         if(Input::GetKeyDown(KeyCode::Escape)){
