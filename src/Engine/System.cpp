@@ -89,7 +89,8 @@ void System::LateUpdate() {
 
         map[y][x] = renderer->getAsciiValue();
 	}
-
+    //Au lieux de convertir en string on pourrait
+    // renvoyer la mattrice a un moteur de rendu
 	//FINAL RENDER
 	std::string render = "";
 	for(int i = 0; i < map.size(); i++) {
