@@ -11,7 +11,7 @@
 class PlayerMovement : public Component {
 protected:
     Transform* transform;
-    float speed = 100;
+    float speed = 1000;
 public:
     PlayerMovement(GameObject* go) : Component(go){}
     void Start() override;
