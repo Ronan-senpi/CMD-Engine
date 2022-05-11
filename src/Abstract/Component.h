@@ -8,6 +8,7 @@
 class GameObject;
 class Component : public Object{
 public:
+    explicit Component(GameObject * go): gameObject(go){}
     GameObject* gameObject;
     Component();
 

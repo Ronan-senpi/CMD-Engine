@@ -12,6 +12,7 @@ class PlayerMovement : public Component {
 protected:
     Transform* transform;
 public:
+    PlayerMovement(GameObject* go) : Component(go){}
     void Start() override;
 
     void Update() override;

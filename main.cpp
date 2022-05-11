@@ -12,8 +12,8 @@ constexpr float fixedUpdateRate = 1.f / 100.f;
 
 GameObject *CreateBaseObject(Position pos, char c) {
     GameObject *object = new GameObject();
-    Transform *trans = new Transform(pos);
-    ASCIIRenderer *renderer = new ASCIIRenderer(c, 0);
+    Transform *trans = new Transform(object,pos);
+    ASCIIRenderer *renderer = new ASCIIRenderer(object,c, 0);
 
     object->AddComponent(trans);
     object->AddComponent(renderer);

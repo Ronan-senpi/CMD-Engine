@@ -5,7 +5,7 @@
 #include "ASCIIRenderer.h"
 
 
-ASCIIRenderer::ASCIIRenderer(char ascii, int renderPriority) : asciiValue(ascii), priority(renderPriority) {
+ASCIIRenderer::ASCIIRenderer(GameObject* go, char ascii, int renderPriority) : Component(go), asciiValue(ascii), priority(renderPriority) {
 
 }
 char ASCIIRenderer::getAsciiValue() const {
