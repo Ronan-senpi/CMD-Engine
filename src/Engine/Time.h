@@ -30,7 +30,7 @@ namespace Time {
      * @return
      */
     static float DeltaTime(){
-        return elapsedTime.count();
+       return std::clamp(elapsedTime.count(), 0.001f, 0.1f );
     }
 
     static void FixedUpdate(){
@@ -44,6 +44,6 @@ namespace Time {
      * @return
      */
     static float FixedDeltaTime(){
-        return elapsedTime.count();
+        return std::clamp(fixedElapsedTime.count(), 0.001f, 0.1f );
     }
 }
