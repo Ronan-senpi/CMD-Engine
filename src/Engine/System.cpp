@@ -11,11 +11,11 @@
 
 void System::Run() {
 	Start();
-    std::cout << "Enter for start" << std::endl;
+    std::cout << "A for start" << std::endl;
 
-    while (true){
+    while (!isPlaying){
 
-        if(Input::GetKeyDown(KeyCode::M)){
+        if(Input::GetKeyDown(KeyCode::A)){
             std::cout << "Start" << std::endl;
             isPlaying = true;
             break;
@@ -65,7 +65,8 @@ void System::LateUpdate() {
 	s->LateUpdate();
 
 	//Clear
-	std::system("cls");
+    if(clear_frame)
+	    std::system("cls");
 
 	//RASTERISATION ASCII
 	int width = s->getWidth();
@@ -97,7 +98,7 @@ void System::LateUpdate() {
 	std::cout << render << std::endl;
 
 	frameCounter++;
-	if(frameCounter > 1000) isPlaying = false;
+//	if(frameCounter > 1000) isPlaying = false;
 }
 
 void System::Start() {
