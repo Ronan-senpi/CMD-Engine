@@ -5,18 +5,16 @@
 #include "../Objects/GameObject.h"
 #include "../Components/Transform.h"
 #include "../Components/ASCIIRenderer.h"
-
 enum MapDataType : int {None,Size,Labels,Map};
-enum MapCellType : int {Empty,Wall,Enemy,Player,Gold};
 
 MapLoader::MapLoader() {
-
 }
-void MapLoader::LoadMap(Scene* scene, std::string& fileName) {
+
+void MapLoader::LoadMap(Factory* fac, Scene* scene, std::string& fileName) {
 
 	std::ifstream infile("resources/map1.txt");
 
-	std::map<char,MapCellType> content;// key : the character, data : the type of cell
+	std::map<char,std::string> content;// key : the character, data : the type of cell
 
 	MapDataType currentData = None;
 	int currentLine = 0;
@@ -38,13 +36,14 @@ void MapLoader::LoadMap(Scene* scene, std::string& fileName) {
 					currentChar = 0;
 					for(char& cell : line){
 
-						MapCellType cellType = content[cell];
-						if(cellType != Empty){
-							std::vector<Component*> components;
-							components.push_back(new Transform(currentChar, currentLine));
-							components.push_back(new ASCIIRenderer(cell,0));
+						auto cellType = content.find(cell);
+						if(cellType != content.end()){
+							//std::vector<Component*> components;
+							//components.push_back(new Transform(currentChar, currentLine));
+							//components.push_back(new ASCIIRenderer(cell,0));
 							//GameObject go(std::move(components));
-							GameObject* go = new GameObject(components);
+							Position pos = Position(currentChar,currentLine);
+							GameObject* go = fac->createObject(cellType->second, pos,cell);
 							scene->Instantiate(go);
 						}
 						currentChar++;
@@ -54,17 +53,7 @@ void MapLoader::LoadMap(Scene* scene, std::string& fileName) {
 				case Labels:
 					substrings = Split(line,labelDelimiter);
 					if(substrings.size() == 2){
-						MapCellType cellType;
-						if(substrings[0] == "wall") {
-								cellType = Wall;
-						}else if(substrings[0] == "player") {
-							cellType = Player;
-						}else if(substrings[0] == "enemy") {
-							cellType = Enemy;
-						}else if(substrings[0] == "gold") {
-							cellType = Gold;
-						}
-						content[substrings[1].c_str()[0]] = cellType;
+						content[substrings[1].c_str()[0]] = substrings[0];
 					}
 					break;
 				case Size:

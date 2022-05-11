@@ -65,7 +65,7 @@ void System::LateUpdate() {
 	s->LateUpdate();
 
 	//Clear
-	//std::system("cls");
+	std::system("cls");
 
 	//RASTERISATION ASCII
 	int width = s->getWidth();

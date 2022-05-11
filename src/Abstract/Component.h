@@ -10,7 +10,7 @@
 
 class Component : public Object{
 public:
-	static const int typeHash = 2;
+	static const int typeHash = 0;
 };
 
 
