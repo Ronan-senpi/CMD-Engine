@@ -6,8 +6,8 @@
 
 Position Position::zero = Position(0.0f, 0.0f);
 Position Position::one = Position(1.f, 1.f);
-Position Position::up = Position(0.0f, 1.f);
-Position Position::down = Position(0.0f, -1.f);
+Position Position::up = Position(0.0f, -1.f);
+Position Position::down = Position(0.0f, 1.f);
 Position Position::left = Position(-1.f, 0.0f);
 Position Position::right = Position(1.f, 0.0f);
 
