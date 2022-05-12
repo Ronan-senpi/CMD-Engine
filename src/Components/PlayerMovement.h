@@ -12,6 +12,7 @@ class PlayerMovement : public Component {
 protected:
     Transform* transform;
 public:
+	static const int typeHash = 4;
     PlayerMovement(GameObject* go) : Component(go){}
     void Start() override;
 

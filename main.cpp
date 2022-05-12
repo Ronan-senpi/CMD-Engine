@@ -6,6 +6,7 @@
 #include "src/Components/ASCIIRenderer.h"
 #include "src/Engine/TagManager.h"
 #include "src/Components/PlayerMovement.h"
+#include "src/Components/Enemy.h"
 #include <vector>
 
 constexpr float updateRate = 1.f / 100.f;
@@ -31,6 +32,8 @@ GameObject *CreatePlayer(Position pos, char c) {
 
 GameObject *CreateEnemy(Position pos, char c) {
     GameObject *enemy = CreateBaseObject(pos, c);
+	Enemy *enemyController = new Enemy(enemy);
+	enemy->AddComponent(enemyController);
     //Add specifics player components
     return enemy;
 }

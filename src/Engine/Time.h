@@ -44,6 +44,6 @@ namespace Time {
      * @return
      */
     static float FixedDeltaTime(){
-        return elapsedTime.count();
+        return fixedElapsedTime.count();
     }
 }

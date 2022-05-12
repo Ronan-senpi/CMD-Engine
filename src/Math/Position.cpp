@@ -3,6 +3,7 @@
 //
 
 #include "Position.h"
+#include <math.h>
 
 Position Position::zero = Position(0.0f, 0.0f);
 Position Position::one = Position(1.f, 1.f);
@@ -26,12 +27,14 @@ Position operator*(const Position &a, const Position &b) {
 }
 
 Position operator*(const float &a, const Position &b) {
-    return {a * b.x, a * b.y};
+	return {a * b.x, a * b.y};
 }
 
-Position operator*(const Position &a, const float &b) {
-    return {a.x * b, a.y * b};
+
+Position operator*(const Position &b, const float &a) {
+	return {a * b.x, a * b.y};
 }
+
 
 void Position::operator+=(const Position &b) {
     x += b.x;
@@ -41,6 +44,15 @@ void Position::operator+=(const Position &b) {
 void Position::operator+=(const float &b) {
     x += b;
     y += b;
+}
+
+float Position::magnitude() const {
+	return sqrt(x*x + y*y);
+}
+
+void Position::normalize() {
+	x / magnitude();
+	y / magnitude();
 }
 
 Position operator+(const Position &a, const Position &b) {
@@ -54,3 +66,8 @@ Position operator+(const float &a, const Position &b) {
 Position operator+(const Position &a, const float &b) {
     return {a.x + b, a.y + b};
 }
+
+Position operator-(const Position &a, const Position &b) {
+	return {a.x - b.x, a.y - b.y};
+}
+

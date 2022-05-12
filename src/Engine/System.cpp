@@ -13,14 +13,14 @@ void System::Run() {
 	Start();
     std::cout << "Enter for start" << std::endl;
 
-    while (true){
-
-        if(Input::GetKeyDown(KeyCode::M)){
-            std::cout << "Start" << std::endl;
-            isPlaying = true;
-            break;
-        }
-    }
+//    while (true){
+//
+//        if(Input::GetKeyDown(KeyCode::M)){
+//            std::cout << "Start" << std::endl;
+//            isPlaying = true;
+//            break;
+//        }
+//    }
 
     while (isPlaying ) {
         if(Input::GetKeyDown(KeyCode::Escape)){
@@ -85,7 +85,10 @@ void System::LateUpdate() {
 		ASCIIRenderer* renderer = go->getComponent<ASCIIRenderer>();
 		int x = (int)transform->pos.x;
 		int y = (int)transform->pos.y;
-
+		x = std::max(x,0);
+		y = std::max(y,0);
+		x = std::min(x,s->getWidth()-1);
+		y = std::min(y,s->getHeight()-1);
         map[y][x] = renderer->getAsciiValue();
 	}
 

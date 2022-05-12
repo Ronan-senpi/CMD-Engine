@@ -30,13 +30,16 @@ struct Position {
 
     void operator+=(const float &b);
 
+	float magnitude() const;
+	void normalize();
+
 };
 
 Position operator*(const Position &a, const Position &b);
 
 Position operator*(const float &a, const Position &b);
 
-Position operator*(const Position &a, const float &b);
+Position operator*(const Position &b, const float &a);
 
 Position operator+(const Position &a, const Position &b);
 
@@ -44,4 +47,5 @@ Position operator+(const float &a, const Position &b);
 
 Position operator+(const Position &a, const float &b);
 
+Position operator-(const Position &a, const Position &b);
 #endif //CMD_ENGINE_POSITION_H

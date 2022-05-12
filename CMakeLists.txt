@@ -19,7 +19,8 @@ add_executable(CMD_Engine
         src/Utils/Input/KeyCode.h
         src/Utils/Hashing.cpp
         src/Components/PlayerMovement.cpp
-        src/Components/PlayerMovement.h src/Utils/Input/Input.cpp
+        src/Utils/Input/Input.cpp
+        src/Components/Enemy.cpp
         src/Engine/TagManager.cpp
         )
 
